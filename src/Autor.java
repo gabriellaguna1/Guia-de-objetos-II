@@ -3,10 +3,10 @@
 //        //único autor. Ejecute las siguientes instrucciones:
 //        //a. Inicialice un objeto de tipo Autor, “Joshua”, “Bloch”, “joshua@email.com”, ’M’.
 public class Autor {
-    String name;
-    String surname;
-    String eMail;
-    String gender;
+    private String name;
+    private String surname;
+    private String eMail;
+    private String gender;
 
     public Autor() {
     }
@@ -21,4 +21,19 @@ public class Autor {
         System.out.println("AUTOR: "+ a.name+", "+a.surname+", "+a.eMail+", "+a.gender);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public String getGender() {
+        return gender;
+    }
 }

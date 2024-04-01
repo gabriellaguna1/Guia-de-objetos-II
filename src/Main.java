@@ -1,5 +1,10 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.List;
+
 public class Main {
-    public static void main(String[] args) {
+    public static <list> void main(String[] args) {
 
         //region EJERCICIO 1
         //Es necesario modelar el objeto de tipo Libro con las siguientes caracteristicas, titulo,
@@ -20,8 +25,8 @@ public class Main {
         //h. Modificar la clase Libro, para que acepte más de 1 Autor. Y realizar los
         //cambios necesarios en el método del punto g, para imprimir un nuevo
         //mensaje que liste los autores que contribuyeron a ese libro.
-        /*
-        Autor a= new Autor("Joshua", "Bloch","joshua@email.com", "M");
+
+        /*Autor a= new Autor("Joshua", "Bloch","joshua@email.com", "M");
         //agregado de punto h
         Autor b= new Autor("Montoto", "flores", "montotoflores@email.com", "M");
         a.printAutor(a);
@@ -69,6 +74,40 @@ public class Main {
         //para que el mismo pueda almacenar múltiples Ítems de venta y a su vez
         //calcular los montos totales con y sin el descuento aplicado.
 
-        
+        System.out.println("Ingrese nombre del cliente: ");
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        System.out.println("ingrese e-mail: ");
+        String eMail = sc.nextLine();
+        System.out.println("Ingrese porcentaje de descuento: ");
+        Scanner sr = new Scanner(System.in);
+        Float descuento = sr.nextFloat();
+
+
+        Cliente client = new Cliente(name, eMail, descuento);
+        client.getClient(client);
+        System.out.println("para crear una factura ingrese el monto total de la venta: ");
+        Float venta = sr.nextFloat();
+        LocalDate f = LocalDate.now();
+        String fecha = f.toString();
+        //agregado punto e
+
+
+        ItemVenta itemVenta1 = new ItemVenta("Lapiz", "Lapiz numero 3", 15.0f);
+        ItemVenta itemVenta2 = new ItemVenta("Hojas A4", "Hojas A4 x150", 175.5f);
+        ItemVenta itemVenta3 = new ItemVenta("Carpeta A4", "Carpeta negra A4", 25.0f);
+
+        List<ItemVenta> product = new ArrayList<>();
+        product.add(itemVenta1);
+        product.add(itemVenta2);
+        product.add(itemVenta3);
+
+        Factura fac = new Factura(venta, fecha, client, product);
+        System.out.println("Monto total factura ID: " + fac.ID + " " + fac.montoTotal + ", con descuento: " + fac.finalPrice(fac));
+        System.out.println("mostrando todos los datos de la factura...");
+        fac.getFactura(fac);
+        fac.mostrarArreglo(fac);
+
+
     }
 }
